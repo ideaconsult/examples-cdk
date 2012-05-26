@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-05-26T15:50:09.855">
+<file name="D:\src-examples\examples-cdk\maven-single-module\src\main\java\net\idea\examples\cdk\maven_single_module\ChemWizard.java">
+<violation beginline="126" endline="126" begincolumn="61" endcolumn="61" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="net.idea.examples.cdk.maven_single_module" class="ChemWizard" method="process" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+</pmd>
