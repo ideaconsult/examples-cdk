@@ -41,7 +41,7 @@
     </dependency>
     <dependency>
       <groupId>org.openscience.cdk</groupId>
-      <artifactId>cdk-silent</artifactId>
+      <artifactId>cdk-data</artifactId>
       <version>${cdk.version}</version>
     </dependency>
     <dependency>
@@ -144,7 +144,7 @@
 	      <mainClass>net.idea.examples.cdk.maven_single_module.MainApp</mainClass>  
 	      <arguments>  
 	       <argument>-f</argument>  
-	       <argument>arg1</argument>  
+	       <argument>src\main\resources\net\idea\examples\test.sdf</argument>  
 	      </arguments>  
 	     </configuration>  
 	    </execution>  

@@ -10,11 +10,11 @@ import java.util.logging.Logger;
 
 import net.idea.examples.cdk.maven_single_module.MainApp._option;
 
+import org.openscience.cdk.DefaultChemObjectBuilder;
 import org.openscience.cdk.aromaticity.CDKHueckelAromaticityDetector;
 import org.openscience.cdk.interfaces.IAtomContainer;
 import org.openscience.cdk.io.SDFWriter;
 import org.openscience.cdk.io.iterator.IteratingMDLReader;
-import org.openscience.cdk.silent.SilentChemObjectBuilder;
 import org.openscience.cdk.smiles.SmilesGenerator;
 import org.openscience.cdk.tools.manipulator.AtomContainerManipulator;
 
@@ -83,7 +83,7 @@ public class ChemWizard {
 			 * cdk-slient module
 			 * http://ambit.uni-plovdiv.bg:8083/nexus/index.html#nexus-search;classname~SilentChemObjectBuilder
 			 */			
-			reader = new IteratingMDLReader(in, SilentChemObjectBuilder.getInstance());
+			reader = new IteratingMDLReader(in, DefaultChemObjectBuilder.getInstance());
 			LOGGER.log(Level.INFO, String.format("Reading %s",file.getAbsoluteFile()));
 			while (reader.hasNext()) {
 				IAtomContainer molecule = reader.next();

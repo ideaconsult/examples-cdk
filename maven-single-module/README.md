@@ -131,6 +131,37 @@ Maven profiles
 	[INFO] BUILD SUCCESSFUL
 	[INFO] ------------------------------------------------------------------------
 	
+Run tests
+--------------
+	
+To run tests use
+
+	mvn test 
+
+Normally, this command launches junit tests, defined in the tets folder. However, for convenience and quick test, this example project 
+was configured to launch the main method of (MainApp.java) with mvn test command. The main reason is to be able to switch profiles quickly.
+
+	maven-single-module>mvn test
+	[INFO] Scanning for projects...
+	[INFO] ------------------------------------------------------------------------
+	[INFO] Building maven-single-module
+	[INFO]    task-segment: [test]
+	[INFO] ------------------------------------------------------------------------
+	[INFO] [resources:resources {execution: default-resources}]
+	[INFO] Using 'UTF-8' encoding to copy filtered resources.
+    ....
+	[INFO] Preparing exec:java
+	[WARNING] Removing: java from forked lifecycle, to prevent recursive invocation.
+	[INFO] No goals needed for project - skipping
+	[INFO] [exec:java {execution: default}]
+
+	Simple example of a Maven project
+	usage: net.idea.examples.cdk.maven_single_module.MainApp
+	 -f,--file <file>   Input file
+	 -h,--help          Simple example of a Maven project
+	Examples:
+	Read file :     java -jar examples-maven-0.0.1-SNAPSHOT.jar     -f filename
+	
 Create web site:
 --------------
 
