@@ -35,7 +35,6 @@ Run
     java -jar target/example-cdk-maven1-0.0.1-SNAPSHOT.jar -f file.sdf
     
 
-
 Maven profiles 
 --------------
 
@@ -44,7 +43,8 @@ Maven profiles
     This project has defined several maven profiles, allowing to switch between different CDK versions. 
 	
 * Listing all profiles. 
-	
+
+    	
      maven-single-module>mvn help:all-profiles
      [INFO] Scanning for projects...
      [INFO] Searching repository for plugin with prefix: 'help'.
@@ -70,7 +70,8 @@ Maven profiles
      [INFO] ------------------------------------------------------------------------
 	    
 * Displaying the active profile. The default active profile is -P cdk-1.4.10 
-	    
+
+       
     maven-single-module>mvn help:active-profiles
     [INFO] Scanning for projects...
     [INFO] Searching repository for plugin with prefix: 'help'.
@@ -90,7 +91,8 @@ Maven profiles
     [INFO] ------------------------------------------------------------------------	 
 	
 * Setting the active profile by -P option. Using -P cdk-1.4.5 will force the Maven build to use the CDK 1.4.5 version
-	    
+
+              	    
     maven-single-module>mvn help:active-profiles -P cdk-1.4.5
     [INFO] Scanning for projects...
     [INFO] Searching repository for plugin with prefix: 'help'.
@@ -104,14 +106,14 @@ Maven profiles
     
     The following profiles are active:
     
-	- cdk-1.4.5 (source: pom)
+     - cdk-1.4.5 (source: pom)
     
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESSFUL
     [INFO] ------------------------------------------------------------------------
     
 * Combining profiles 
-	    
+
     maven-single-module>mvn help:active-profiles -P cdk-1.1.5 -P production
     [INFO] Scanning for projects...
     [INFO] Searching repository for plugin with prefix: 'help'.
@@ -124,8 +126,8 @@ Maven profiles
     Active Profiles for Project 'net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT':
     
     The following profiles are active:
-    
-	 - production (source: pom)
+     
+     - production (source: pom)
      - cdk-1.1.5 (source: pom)
     
     [INFO] ------------------------------------------------------------------------
