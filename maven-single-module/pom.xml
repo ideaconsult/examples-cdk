@@ -129,6 +129,27 @@
           </execution>
         </executions>
       </plugin>
+      <!-- Run main method within maven (useful if providing profiles) -->
+      <plugin>  
+	   <groupId>org.codehaus.mojo</groupId>  
+	   <artifactId>exec-maven-plugin</artifactId>  
+	   <version>1.1.1</version>  
+	   <executions>  
+	    <execution>  
+	     <phase>test</phase>  
+	     <goals>  
+	      <goal>java</goal>  
+	     </goals>  
+	     <configuration>  
+	      <mainClass>net.idea.examples.cdk.maven_single_module.MainApp</mainClass>  
+	      <arguments>  
+	       <argument>-f</argument>  
+	       <argument>arg1</argument>  
+	      </arguments>  
+	     </configuration>  
+	    </execution>  
+	   </executions>  
+	  </plugin>  
     </plugins>
     <pluginManagement>
       <plugins>
@@ -289,5 +310,94 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+    	<id>cdk-1.4.10</id>
+    	<activation>
+    		<activeByDefault>true</activeByDefault>
+    	</activation>
+    	<properties>
+    		<cdk.version>1.4.10</cdk.version>
+    	</properties>
+    </profile>
+    <profile>
+    	<id>cdk-1.4.9</id>
+    	<activation>
+    		<activeByDefault>false</activeByDefault>
+    	</activation>
+    	<properties>
+    		<cdk.version>1.4.9</cdk.version>
+    	</properties>
+    	
+    </profile>
+    <profile>
+    	<id>cdk-1.4.8</id>
+    	<activation>
+    		<activeByDefault>false</activeByDefault>
+    	</activation>
+    	<properties>
+    		<cdk.version>1.4.8</cdk.version>
+    	</properties>
+    	
+    </profile>
+    <profile>
+    	<id>cdk-1.4.5</id>
+    	<activation>
+    		<activeByDefault>false</activeByDefault>
+    	</activation>
+    	<properties>
+    		<cdk.version>1.4.8</cdk.version>
+    	</properties>
+    	
+    </profile>    
+    <profile>
+    	<id>cdk-1.3.8</id>
+    	<activation>
+    		<activeByDefault>false</activeByDefault>
+    	</activation>
+    	<properties>
+    		<cdk.version>1.3.8</cdk.version>
+    	</properties>
+    	
+    </profile>        
+    <profile>
+    	<id>cdk-1.2.3</id>
+    	<activation>
+    		<activeByDefault>false</activeByDefault>
+    	</activation>
+    	<properties>
+    		<cdk.version>1.2.3</cdk.version>
+    	</properties>
+    	
+    </profile>        
+    <profile>
+    	<id>cdk-1.2.0</id>
+    	<activation>
+    		<activeByDefault>false</activeByDefault>
+    	</activation>
+    	<properties>
+    		<cdk.version>1.2.0</cdk.version>
+    	</properties>
+    	
+    </profile>        
+    <profile>
+    	<id>cdk-1.1.6</id>
+    	<activation>
+    		<activeByDefault>false</activeByDefault>
+    	</activation>
+    	<properties>
+    		<cdk.version>1.1.6</cdk.version>
+    	</properties>
+    	
+    </profile>        
+    <profile>
+    	<id>cdk-1.1.5</id>
+    	<activation>
+    		<activeByDefault>false</activeByDefault>
+    	</activation>
+    	<properties>
+    		<cdk.version>1.1.5</cdk.version>
+    	</properties>
+    	
+    </profile>        
   </profiles>
 </project>
