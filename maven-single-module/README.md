@@ -42,7 +42,7 @@ Maven profiles are essentially set of properties, allowing to customize the buil
 
 This project has defined several maven profiles, allowing to switch between different CDK versions. 
 	
-* Listing all profiles. 
+Listing all profiles. 
 
     maven-single-module>mvn help:all-profiles
     [INFO] Scanning for projects...
@@ -68,7 +68,7 @@ This project has defined several maven profiles, allowing to switch between diff
     [INFO] BUILD SUCCESSFUL
     [INFO] ------------------------------------------------------------------------
 	    
-* Displaying the active profile. The default active profile is -P cdk-1.4.10 
+Displaying the active profile. The default active profile is -P cdk-1.4.10 
 
        
     maven-single-module>mvn help:active-profiles
@@ -89,7 +89,7 @@ This project has defined several maven profiles, allowing to switch between diff
     [INFO] BUILD SUCCESSFUL
     [INFO] ------------------------------------------------------------------------	 
 	
-* Setting the active profile by -P option. Using -P cdk-1.4.5 will force the Maven build to use the CDK 1.4.5 version
+Setting the active profile by -P option. Using -P cdk-1.4.5 will force the Maven build to use the CDK 1.4.5 version
 
               	    
     maven-single-module>mvn help:active-profiles -P cdk-1.4.5
@@ -111,7 +111,7 @@ This project has defined several maven profiles, allowing to switch between diff
     [INFO] BUILD SUCCESSFUL
     [INFO] ------------------------------------------------------------------------
     
-* Combining profiles 
+Combining profiles 
 
     maven-single-module>mvn help:active-profiles -P cdk-1.1.5 -P production
     [INFO] Scanning for projects...
