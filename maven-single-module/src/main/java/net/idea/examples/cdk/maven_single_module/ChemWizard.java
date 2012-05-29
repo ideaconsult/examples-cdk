@@ -15,6 +15,8 @@ import org.openscience.cdk.aromaticity.CDKHueckelAromaticityDetector;
 import org.openscience.cdk.interfaces.IAtomContainer;
 import org.openscience.cdk.io.SDFWriter;
 import org.openscience.cdk.io.iterator.IteratingMDLReader;
+import org.openscience.cdk.qsar.DescriptorValue;
+import org.openscience.cdk.qsar.descriptors.molecular.XLogPDescriptor;
 import org.openscience.cdk.smiles.SmilesGenerator;
 import org.openscience.cdk.tools.manipulator.AtomContainerManipulator;
 
@@ -86,7 +88,16 @@ public class ChemWizard {
 			reader = new IteratingMDLReader(in, DefaultChemObjectBuilder.getInstance());
 			LOGGER.log(Level.INFO, String.format("Reading %s",file.getAbsoluteFile()));
 			while (reader.hasNext()) {
-				IAtomContainer molecule = reader.next();
+				/**
+				 * Note recent versions allow 
+				 * IAtomContainer molecule  = reader.next();
+				 */
+				Object object = reader.next();
+				IAtomContainer molecule = null;
+				if (object instanceof IAtomContainer)
+					molecule = (IAtomContainer)object;
+				else break;
+				
 				records_read++;
 				try {
 					/**
@@ -117,6 +128,11 @@ public class ChemWizard {
 					smilesGenerator.setUseAromaticityFlag(true);
 					molecule.setProperty("SMILES (Aromatic)",smilesGenerator.createSMILES(molecule));
 					
+					/**
+					 * Descriptor calculation
+					 */
+					calculateLogP(molecule);
+					
 					writer.write(molecule);
 					System.err.print(".");
 					records_processed++;;
@@ -145,6 +161,8 @@ public class ChemWizard {
 	 */
 	private SmilesGenerator smilesGenerator = new SmilesGenerator();
 	
+	private XLogPDescriptor xlogp = new XLogPDescriptor();
+	
 	protected void assignSMILES(IAtomContainer molecule) throws Exception {
 		smilesGenerator.setUseAromaticityFlag(false);
 		molecule.setProperty("SMILES (Kekule)",smilesGenerator.createSMILES(molecule));
@@ -153,4 +171,12 @@ public class ChemWizard {
 		molecule.setProperty("SMILES (Aromatic)",smilesGenerator.createSMILES(molecule));
 		
 	}
+	
+	protected void calculateLogP(IAtomContainer molecule) throws Exception {
+		DescriptorValue value = xlogp.calculate(molecule);
+		String[] names = value.getNames();
+		for (String name:names)
+			molecule.setProperty(name, value.getValue().toString());
+		
+	}	
 }
