@@ -39,122 +39,122 @@ Run
 Maven profiles 
 --------------
 
-	Maven profiles are essentially set of properties, allowing to customize the build. More information [here](http://maven.apache.org/guides/introduction/introduction-to-profiles.html).  
+    Maven profiles are essentially set of properties, allowing to customize the build. More information [here](http://maven.apache.org/guides/introduction/introduction-to-profiles.html).  
 
-	This project has defined several maven profiles, allowing to switch between different CDK versions. 
+    This project has defined several maven profiles, allowing to switch between different CDK versions. 
 	
 * Listing all profiles. 
 	
     maven-single-module>mvn help:all-profiles
-	[INFO] Scanning for projects...
-	[INFO] Searching repository for plugin with prefix: 'help'.
-	[INFO] ------------------------------------------------------------------------
-	[INFO] Building maven-single-module
-	[INFO]    task-segment: [help:all-profiles] (aggregator-style)
-	[INFO] ------------------------------------------------------------------------
-	[INFO] [help:all-profiles {execution: default-cli}]
-	[INFO] Listing Profiles for Project: net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT
-	  Profile Id: cdk-1.4.10 (Active: true , Source: pom)
-	  Profile Id: cdk-1.4.9 (Active: false , Source: pom)
-	  Profile Id: cdk-1.4.8 (Active: false , Source: pom)
-	  Profile Id: cdk-1.4.5 (Active: false , Source: pom)
-	  Profile Id: cdk-1.3.8 (Active: false , Source: pom)
-	  Profile Id: cdk-1.2.3 (Active: false , Source: pom)
-	  Profile Id: cdk-1.2.0 (Active: false , Source: pom)
-	  Profile Id: cdk-1.1.6 (Active: false , Source: pom)
-	  Profile Id: cdk-1.1.5 (Active: false , Source: pom)
-	  Profile Id: development (Active: false , Source: pom)
-	  Profile Id: production (Active: false , Source: pom)
-	[INFO] ------------------------------------------------------------------------
-	[INFO] BUILD SUCCESSFUL
-	[INFO] ------------------------------------------------------------------------
+    [INFO] Scanning for projects...
+    [INFO] Searching repository for plugin with prefix: 'help'.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Building maven-single-module
+    [INFO]    task-segment: [help:all-profiles] (aggregator-style)
+    [INFO] ------------------------------------------------------------------------
+    [INFO] [help:all-profiles {execution: default-cli}]
+    [INFO] Listing Profiles for Project: net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT
+      Profile Id: cdk-1.4.10 (Active: true , Source: pom)
+      Profile Id: cdk-1.4.9 (Active: false , Source: pom)
+      Profile Id: cdk-1.4.8 (Active: false , Source: pom)
+      Profile Id: cdk-1.4.5 (Active: false , Source: pom)
+      Profile Id: cdk-1.3.8 (Active: false , Source: pom)
+      Profile Id: cdk-1.2.3 (Active: false , Source: pom)
+      Profile Id: cdk-1.2.0 (Active: false , Source: pom)
+      Profile Id: cdk-1.1.6 (Active: false , Source: pom)
+      Profile Id: cdk-1.1.5 (Active: false , Source: pom)
+      Profile Id: development (Active: false , Source: pom)
+      Profile Id: production (Active: false , Source: pom)
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESSFUL
+    [INFO] ------------------------------------------------------------------------
 	    
 * Displaying the active profile. The default active profile is -P cdk-1.4.10 
 	    
-	maven-single-module>mvn help:active-profiles
-	[INFO] Scanning for projects...
-	[INFO] Searching repository for plugin with prefix: 'help'.
-	[INFO] ------------------------------------------------------------------------
-	[INFO] Building maven-single-module
-	[INFO]    task-segment: [help:active-profiles] (aggregator-style)
-	[INFO] ------------------------------------------------------------------------
-	[INFO] [help:active-profiles {execution: default-cli}]
-	[INFO]
-	Active Profiles for Project 'net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT':
-	
-	The following profiles are active:
-	
-	 - cdk-1.4.10 (source: pom)	    
-	[INFO] ------------------------------------------------------------------------
-	[INFO] BUILD SUCCESSFUL
-	[INFO] ------------------------------------------------------------------------	 
+    maven-single-module>mvn help:active-profiles
+    [INFO] Scanning for projects...
+    [INFO] Searching repository for plugin with prefix: 'help'.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Building maven-single-module
+    [INFO]    task-segment: [help:active-profiles] (aggregator-style)
+    [INFO] ------------------------------------------------------------------------
+    [INFO] [help:active-profiles {execution: default-cli}]
+    [INFO]
+    Active Profiles for Project 'net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT':
+    
+    The following profiles are active:
+    
+     - cdk-1.4.10 (source: pom)	    
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESSFUL
+    [INFO] ------------------------------------------------------------------------	 
 	
 * Setting the active profile by -P option. Using -P cdk-1.4.5 will force the Maven build to use the CDK 1.4.5 version
 	    
-	maven-single-module>mvn help:active-profiles -P cdk-1.4.5
-	[INFO] Scanning for projects...
-	[INFO] Searching repository for plugin with prefix: 'help'.
-	[INFO] ------------------------------------------------------------------------
-	[INFO] Building maven-single-module
-	[INFO]    task-segment: [help:active-profiles] (aggregator-style)
-	[INFO] ------------------------------------------------------------------------
-	[INFO] [help:active-profiles {execution: default-cli}]
-	[INFO]
-	Active Profiles for Project 'net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT':
-	
-	The following profiles are active:
-	
-	 - cdk-1.4.5 (source: pom)
-	
-	[INFO] ------------------------------------------------------------------------
-	[INFO] BUILD SUCCESSFUL
-	[INFO] ------------------------------------------------------------------------
+    maven-single-module>mvn help:active-profiles -P cdk-1.4.5
+    [INFO] Scanning for projects...
+    [INFO] Searching repository for plugin with prefix: 'help'.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Building maven-single-module
+    [INFO]    task-segment: [help:active-profiles] (aggregator-style)
+    [INFO] ------------------------------------------------------------------------
+    [INFO] [help:active-profiles {execution: default-cli}]
+    [INFO]
+    Active Profiles for Project 'net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT':
+    
+    The following profiles are active:
+    
+	- cdk-1.4.5 (source: pom)
+    
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESSFUL
+    [INFO] ------------------------------------------------------------------------
     
 * Combining profiles 
 	    
-	maven-single-module>mvn help:active-profiles -P cdk-1.1.5 -P production
-	[INFO] Scanning for projects...
-	[INFO] Searching repository for plugin with prefix: 'help'.
-	[INFO] ------------------------------------------------------------------------
-	[INFO] Building maven-single-module
-	[INFO]    task-segment: [help:active-profiles] (aggregator-style)
-	[INFO] ------------------------------------------------------------------------
-	[INFO] [help:active-profiles {execution: default-cli}]
-	[INFO]
-	Active Profiles for Project 'net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT':
-	
-	The following profiles are active:
-	
+    maven-single-module>mvn help:active-profiles -P cdk-1.1.5 -P production
+    [INFO] Scanning for projects...
+    [INFO] Searching repository for plugin with prefix: 'help'.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Building maven-single-module
+    [INFO]    task-segment: [help:active-profiles] (aggregator-style)
+    [INFO] ------------------------------------------------------------------------
+    [INFO] [help:active-profiles {execution: default-cli}]
+    [INFO]
+    Active Profiles for Project 'net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT':
+    
+    The following profiles are active:
+    
 	 - production (source: pom)
-	 - cdk-1.1.5 (source: pom)
-	
-	[INFO] ------------------------------------------------------------------------
-	[INFO] BUILD SUCCESSFUL
-	[INFO] ------------------------------------------------------------------------
+     - cdk-1.1.5 (source: pom)
+    
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESSFUL
+    [INFO] ------------------------------------------------------------------------
 	
 Run tests
 --------------
 	
 To run tests use
 
-	mvn test 
+    mvn test 
 
 Normally, this command launches junit tests, defined in the tets folder. However, for convenience and quick test, this example project 
 was configured to launch the main method of (MainApp.java) with mvn test command. The main reason is to be able to switch profiles quickly.
 
-	maven-single-module>mvn test
-	[INFO] Scanning for projects...
-	[INFO] ------------------------------------------------------------------------
-	[INFO] Building maven-single-module
-	[INFO]    task-segment: [test]
-	[INFO] ------------------------------------------------------------------------
-	[INFO] [resources:resources {execution: default-resources}]
-	[INFO] Using 'UTF-8' encoding to copy filtered resources.
+    maven-single-module>mvn test
+    [INFO] Scanning for projects...
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Building maven-single-module
+    [INFO]    task-segment: [test]
+    [INFO] ------------------------------------------------------------------------
+    [INFO] [resources:resources {execution: default-resources}]
+    [INFO] Using 'UTF-8' encoding to copy filtered resources.
     ....
-	[INFO] Preparing exec:java
-	[WARNING] Removing: java from forked lifecycle, to prevent recursive invocation.
-	[INFO] No goals needed for project - skipping
-	[INFO] [exec:java {execution: default}]
+    [INFO] Preparing exec:java
+    [WARNING] Removing: java from forked lifecycle, to prevent recursive invocation.
+    [INFO] No goals needed for project - skipping
+    [INFO] [exec:java {execution: default}]
 
 	Simple example of a Maven project
 	usage: net.idea.examples.cdk.maven_single_module.MainApp
