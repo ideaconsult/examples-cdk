@@ -14,7 +14,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.8.1</junit.version>
-    <cdk.version>1.4.10</cdk.version>
   </properties>
   <url>https://github.com/ideaconsult/examples-cdk</url>
   <issueManagement>
