@@ -9,3 +9,4 @@ Package-Vendor: IdeaConsult Ltd.
 Implementation-Title: Example of a simple Apache Maven project with The Chemical Development Kit dependency
 Implementation-Version: ${project.version}
 Implementation-Vendor: IdeaConsult Ltd
+cdk.version: ${cdk.version}
