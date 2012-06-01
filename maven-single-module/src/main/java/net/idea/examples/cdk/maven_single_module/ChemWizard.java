@@ -1,9 +1,12 @@
 package net.idea.examples.cdk.maven_single_module;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,10 +16,11 @@ import net.idea.examples.cdk.maven_single_module.MainApp._option;
 import org.openscience.cdk.DefaultChemObjectBuilder;
 import org.openscience.cdk.aromaticity.CDKHueckelAromaticityDetector;
 import org.openscience.cdk.interfaces.IAtomContainer;
-import org.openscience.cdk.io.SDFWriter;
 import org.openscience.cdk.io.iterator.IteratingMDLReader;
 import org.openscience.cdk.qsar.DescriptorValue;
+import org.openscience.cdk.qsar.descriptors.molecular.ALOGPDescriptor;
 import org.openscience.cdk.qsar.descriptors.molecular.XLogPDescriptor;
+import org.openscience.cdk.qsar.result.DoubleArrayResult;
 import org.openscience.cdk.smiles.SmilesGenerator;
 import org.openscience.cdk.tools.manipulator.AtomContainerManipulator;
 
@@ -61,6 +65,15 @@ public class ChemWizard {
 		default: 
 		}
 	}
+	private enum FIELD {
+		SMILES_Kekule,
+		SMILES_Aromatic,
+		XLogP,
+		ALogP,
+		ALogp2,
+		AMR
+	}
+	
 	/**
 	 * 
 	 * @return
@@ -79,7 +92,13 @@ public class ChemWizard {
 		 * http://ambit.uni-plovdiv.bg:8083/nexus/index.html#nexus-search;classname~IteratingMDLReader
 		 */
 		IteratingMDLReader reader = null;
-		SDFWriter writer = new SDFWriter(System.out);
+		
+		Writer writer = new BufferedWriter(new OutputStreamWriter(System.out));
+		for (FIELD field : FIELD.values()) { 
+			writer.write(field.name());
+			writer.write(",");
+		}
+		writer.write("\n");
 		try {
 			/**
 			 * cdk-slient module
@@ -123,18 +142,22 @@ public class ChemWizard {
 					/**
 					 * Generate SMILES and assign as properties
 					 */
-					smilesGenerator.setUseAromaticityFlag(false);
-					molecule.setProperty("SMILES (Kekule)",smilesGenerator.createSMILES(molecule));
-					smilesGenerator.setUseAromaticityFlag(true);
-					molecule.setProperty("SMILES (Aromatic)",smilesGenerator.createSMILES(molecule));
+					assignSMILES(molecule);
 					
 					/**
 					 * Descriptor calculation
 					 */
 					calculateLogP(molecule);
 					
-					writer.write(molecule);
-					System.err.print(".");
+					/**
+					 * Write as plain comma delimited 
+					 */
+					for (FIELD field : FIELD.values()) { 
+						Object value = molecule.getProperty(field.name());
+						writer.write(value==null?"":value.toString());
+						writer.write(",");
+					}
+					writer.write("\n");
 					records_processed++;;
 				} catch (Exception x) {
 					System.err.println("*");
@@ -161,22 +184,32 @@ public class ChemWizard {
 	 */
 	private SmilesGenerator smilesGenerator = new SmilesGenerator();
 	
-	private XLogPDescriptor xlogp = new XLogPDescriptor();
+	private XLogPDescriptor xlogp;
+	private ALOGPDescriptor alogp;
 	
 	protected void assignSMILES(IAtomContainer molecule) throws Exception {
 		smilesGenerator.setUseAromaticityFlag(false);
-		molecule.setProperty("SMILES (Kekule)",smilesGenerator.createSMILES(molecule));
+		molecule.setProperty(FIELD.SMILES_Kekule.name(),smilesGenerator.createSMILES(molecule));
 		smilesGenerator.setUseAromaticityFlag(true);
 		smilesGenerator.createSMILES(molecule);
-		molecule.setProperty("SMILES (Aromatic)",smilesGenerator.createSMILES(molecule));
+		molecule.setProperty(FIELD.SMILES_Aromatic.name(),smilesGenerator.createSMILES(molecule));
 		
 	}
 	
 	protected void calculateLogP(IAtomContainer molecule) throws Exception {
+		if (xlogp==null) xlogp = new XLogPDescriptor();
+		if (alogp==null) alogp = new ALOGPDescriptor();
+		
 		DescriptorValue value = xlogp.calculate(molecule);
 		String[] names = value.getNames();
 		for (String name:names)
 			molecule.setProperty(name, value.getValue().toString());
+		
+		value = alogp.calculate(molecule);
+		names = value.getNames();
+		if (value.getValue() instanceof DoubleArrayResult)
+			for (int i=0; i < names.length;i++)
+				molecule.setProperty(names[i], ((DoubleArrayResult)value.getValue()).get(i));
 		
 	}	
 }
