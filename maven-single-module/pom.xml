@@ -363,7 +363,7 @@
     		<activeByDefault>false</activeByDefault>
     	</activation>
     	<properties>
-    		<cdk.version>1.4.8</cdk.version>
+    		<cdk.version>1.4.5</cdk.version>
     	</properties>
     	
     </profile>    
