@@ -24,7 +24,7 @@ Jars are created in the target folder.
 Compile with specific CDK version
 --------------
 
-    mvn package -P cdk-1.3.8
+    mvn clean install -P cdk-1.3.8
 
 This command uses Maven profile -P cdk-1.3.8. See below more information on maven profiles. 
 The resulting executable jar will include several CDK 1.3.8 jars. To switch the version, just use a different profile.     
