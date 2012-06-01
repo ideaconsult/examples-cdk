@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,6 +15,7 @@ import net.idea.examples.cdk.maven_single_module.MainApp._option;
 import org.openscience.cdk.DefaultChemObjectBuilder;
 import org.openscience.cdk.aromaticity.CDKHueckelAromaticityDetector;
 import org.openscience.cdk.interfaces.IAtomContainer;
+import org.openscience.cdk.interfaces.IMolecule;
 import org.openscience.cdk.io.iterator.IteratingMDLReader;
 import org.openscience.cdk.qsar.DescriptorValue;
 import org.openscience.cdk.qsar.descriptors.molecular.ALOGPDescriptor;
@@ -66,12 +66,12 @@ public class ChemWizard {
 		}
 	}
 	private enum FIELD {
-		SMILES_Kekule,
-		SMILES_Aromatic,
 		XLogP,
 		ALogP,
 		ALogp2,
-		AMR
+		AMR,
+		SMILES_Kekule,
+		SMILES_Aromatic
 	}
 	
 	/**
@@ -112,9 +112,9 @@ public class ChemWizard {
 				 * IAtomContainer molecule  = reader.next();
 				 */
 				Object object = reader.next();
-				IAtomContainer molecule = null;
-				if (object instanceof IAtomContainer)
-					molecule = (IAtomContainer)object;
+				IMolecule molecule = null;
+				if (object instanceof IMolecule)
+					molecule = (IMolecule)object;
 				else break;
 				
 				records_read++;
@@ -124,21 +124,7 @@ public class ChemWizard {
 					 */
 					AtomContainerManipulator.percieveAtomTypesAndConfigureAtoms(molecule);
 					CDKHueckelAromaticityDetector.detectAromaticity(molecule);
-					
-					/**
-					 * The next statement will remove the properties, hence we keep a reference
-					 */
-					Map<Object,Object> properties = molecule.getProperties();
-					/**
-					 * cdk-valencycheck module 
-					 * http://ambit.uni-plovdiv.bg:8083/nexus/index.html#nexus-search;classname~cdkhydrogenadder
-					 */
-					molecule = AtomContainerManipulator.removeHydrogensPreserveMultiplyBonded(molecule);
-					/**
-					 * Set the properties back
-					 */
-					molecule.setProperties(properties);
-					
+
 					/**
 					 * Generate SMILES and assign as properties
 					 */
@@ -187,7 +173,7 @@ public class ChemWizard {
 	private XLogPDescriptor xlogp;
 	private ALOGPDescriptor alogp;
 	
-	protected void assignSMILES(IAtomContainer molecule) throws Exception {
+	protected void assignSMILES(IMolecule molecule) throws Exception {
 		smilesGenerator.setUseAromaticityFlag(false);
 		molecule.setProperty(FIELD.SMILES_Kekule.name(),smilesGenerator.createSMILES(molecule));
 		smilesGenerator.setUseAromaticityFlag(true);
