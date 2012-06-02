@@ -87,6 +87,10 @@
         <url>http://ambit.uni-plovdiv.bg:8083/nexus/content/repositories/snapshots</url>
     </repository>
   </repositories>
+  <organization>
+  	<name>Ideaconsult Ltd.</name>
+  	<url>http://www.ideaconsult.net</url>
+  </organization>
   <build>
     <finalName>example-cdk-maven1</finalName>
     <resources>
@@ -235,7 +239,7 @@
   <licenses>
     <license>
       <name>LGPL3</name>
-      <url>http://www.gnu.org/licenses/lgpl.html</url>
+      <url>http://www.gnu.org/licenses/lgpl.txt</url>
       <distribution>repo</distribution>
       <comments>LGPL 3</comments>
     </license>
