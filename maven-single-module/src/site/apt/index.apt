@@ -1,0 +1,43 @@
+ -----
+ CDK examples
+ -----
+ Background
+ -----
+ May 2012
+
+Simple Maven Project example with The Chemistry Development Kit dependency
+~~~~~~~  
+  
+   This is a simple example how to use {{{http://cdk.sf.net}The Chemistry Development Kit}} via Apache {{{http://maven.apache.org} Apache Maven}} dependencies. It reads an SDF file, generates Kekule and aromatic SMILES and writes the original content plus both SMILES into a new SDF file.
+   
+   Demonstration how to use Maven profiles to switch between CDK versions.	 
+  
+   * Fork it.
+   
+   * Get {{{http://maven.apache.org} Apache Maven}}
+      
+   * Build. Don't worry about downloading jars and setting classpath dependencies. Maven does it for you.
+   
+--------------------
+
+   mvn clean install
+   
+--------------------   
+   
+   * Run 
+   
+--------------------   
+   
+      java -jar target/examples-maven-0.0.1-SNAPSHOT.jar -f file_name.sdf
+   
+--------------------      
+   
+   * Build with specific CDK version 
+   
+--------------------    
+    
+    mvn clean install -P cdk-1.3.8
+   
+--------------------   
+
+   * More examples with {{{https://github.com/ideaconsult/examples-cdk/blob/master/maven-single-module/README.md} Maven profiles}}
