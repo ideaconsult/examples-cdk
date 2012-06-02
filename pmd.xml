@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2012-05-26T15:50:09.855">
-<file name="D:\src-examples\examples-cdk\maven-single-module\src\main\java\net\idea\examples\cdk\maven_single_module\ChemWizard.java">
-<violation beginline="126" endline="126" begincolumn="61" endcolumn="61" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="net.idea.examples.cdk.maven_single_module" class="ChemWizard" method="process" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+<pmd version="4.2.2" timestamp="2012-06-02T08:53:49.604">
+<file name="C:\nina\src\examples-cdk\maven-single-module\src\main\java\net\idea\examples\cdk\maven_single_module\ChemWizard.java">
+<violation beginline="147" endline="147" begincolumn="61" endcolumn="61" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="net.idea.examples.cdk.maven_single_module" class="ChemWizard" method="process" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
 An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="159" endline="159" begincolumn="49" endcolumn="70" rule="EmptyCatchBlock" ruleset="Basic Rules" package="net.idea.examples.cdk.maven_single_module" class="ChemWizard" method="process" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="160" endline="160" begincolumn="49" endcolumn="70" rule="EmptyCatchBlock" ruleset="Basic Rules" package="net.idea.examples.cdk.maven_single_module" class="ChemWizard" method="process" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\nina\src\examples-cdk\maven-single-module\src\main\java\net\idea\examples\cdk\maven_single_module\MainApp.java">
+<violation beginline="49" endline="51" begincolumn="29" endcolumn="25" rule="EmptyTryBlock" ruleset="Basic Rules" package="net.idea.examples.cdk.maven_single_module" class="MainApp" method="main" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyTryBlock" priority="3">
+Avoid empty try blocks
 </violation>
 </file>
 </pmd>

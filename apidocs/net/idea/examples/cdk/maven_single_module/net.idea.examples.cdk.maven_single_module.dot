@@ -37,8 +37,8 @@ digraph G {
 			<tr><td align="left"> + setFile(file : File) </td></tr>
 			<tr><td align="left"> + setOption(option : MainApp._option, argument : String) </td></tr>
 			<tr><td align="left"> + process() : int </td></tr>
-			<tr><td align="left"> # assignSMILES(molecule : IAtomContainer) </td></tr>
-			<tr><td align="left"> + cleanUp() </td></tr>
+			<tr><td align="left"> # assignSMILES(molecule : IMolecule) </td></tr>
+			<tr><td align="left"> # calculateLogP(molecule : IAtomContainer) </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=10.0];
 }
