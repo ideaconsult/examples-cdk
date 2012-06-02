@@ -168,6 +168,15 @@
 	    </execution>  
 	   </executions>  
 	  </plugin>  
+	  		<!-- used for site generation via mvn site:site -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <locales>en</locales>
+        </configuration>
+      </plugin>
     </plugins>
     <pluginManagement>
       <plugins>
