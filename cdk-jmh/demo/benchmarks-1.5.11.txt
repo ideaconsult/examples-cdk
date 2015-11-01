@@ -1,67 +1,77 @@
 # JMH 1.11.2 (released 3 days ago)
 # VM version: JDK 1.8.0_65, VM 25.65-b01
-# VM invoker: jre1.8.0_65\bin\java.exe
+# VM invoker: C:\Program Files (x86)\Java\jre1.8.0_65\bin\java.exe
 # VM options: <none>
 # Warmup: 5 iterations, 1 s each
-# Measurement: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
 # Benchmark: net.idea.benchmark.CDKBenchmark.testGetAtomType
 
-# Run progress: 0.00% complete, ETA 00:00:20
+# Run progress: 0.00% complete, ETA 00:00:30
 # Fork: 1 of 1
-# Warmup Iteration   1: 648573.049 ns/op
-# Warmup Iteration   2: 638416.864 ns/op
-# Warmup Iteration   3: 678388.239 ns/op
-# Warmup Iteration   4: 711750.060 ns/op
-# Warmup Iteration   5: 663114.093 ns/op
-Iteration   1: 647355.414 ns/op
-Iteration   2: 653026.805 ns/op
-Iteration   3: 658418.219 ns/op
-Iteration   4: 627347.482 ns/op
-Iteration   5: 690152.176 ns/op
+# Warmup Iteration   1: 646537.126 ns/op
+# Warmup Iteration   2: 634259.366 ns/op
+# Warmup Iteration   3: 632598.168 ns/op
+# Warmup Iteration   4: 655849.314 ns/op
+# Warmup Iteration   5: 660451.985 ns/op
+Iteration   1: 668099.514 ns/op
+Iteration   2: 650580.441 ns/op
+Iteration   3: 631032.083 ns/op
+Iteration   4: 652624.530 ns/op
+Iteration   5: 644008.903 ns/op
+Iteration   6: 646604.809 ns/op
+Iteration   7: 654841.040 ns/op
+Iteration   8: 782291.819 ns/op
+Iteration   9: 648070.125 ns/op
+Iteration  10: 632361.028 ns/op
 
 
 Result "testGetAtomType":
-  655260.019 ±(99.9%) 87681.805 ns/op [Average]
-  (min, avg, max) = (627347.482, 655260.019, 690152.176), stdev = 22770.686
-  CI (99.9%): [567578.214, 742941.824] (assumes normal distribution)
+  661051.429 ±(99.9%) 66399.626 ns/op [Average]
+  (min, avg, max) = (631032.083, 661051.429, 782291.819), stdev = 43919.241
+  CI (99.9%): [594651.803, 727451.055] (assumes normal distribution)
 
 
 # JMH 1.11.2 (released 3 days ago)
 # VM version: JDK 1.8.0_65, VM 25.65-b01
-# VM invoker: jre1.8.0_65\bin\java.exe
+# VM invoker: C:\Program Files (x86)\Java\jre1.8.0_65\bin\java.exe
 # VM options: <none>
 # Warmup: 5 iterations, 1 s each
-# Measurement: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
 # Benchmark: net.idea.benchmark.CDKBenchmark.testPerceiveAtomType
 
-# Run progress: 50.00% complete, ETA 00:00:10
+# Run progress: 50.00% complete, ETA 00:00:15
 # Fork: 1 of 1
-# Warmup Iteration   1: 16911.617 ns/op
-# Warmup Iteration   2: 14793.560 ns/op
-# Warmup Iteration   3: 14853.313 ns/op
-# Warmup Iteration   4: 14566.202 ns/op
-# Warmup Iteration   5: 14893.081 ns/op
-Iteration   1: 14770.481 ns/op
-Iteration   2: 14937.265 ns/op
-Iteration   3: 15489.278 ns/op
-Iteration   4: 14805.737 ns/op
-Iteration   5: 14948.807 ns/op
+# Warmup Iteration   1: 16345.668 ns/op
+# Warmup Iteration   2: 14718.954 ns/op
+# Warmup Iteration   3: 15996.539 ns/op
+# Warmup Iteration   4: 15297.317 ns/op
+# Warmup Iteration   5: 14985.794 ns/op
+Iteration   1: 15317.342 ns/op
+Iteration   2: 15061.982 ns/op
+Iteration   3: 14812.729 ns/op
+Iteration   4: 16079.255 ns/op
+Iteration   5: 15873.501 ns/op
+Iteration   6: 14546.770 ns/op
+Iteration   7: 14612.523 ns/op
+Iteration   8: 14642.630 ns/op
+Iteration   9: 15322.510 ns/op
+Iteration  10: 14609.627 ns/op
 
 
 Result "testPerceiveAtomType":
-  14990.314 ±(99.9%) 1115.852 ns/op [Average]
-  (min, avg, max) = (14770.481, 14990.314, 15489.278), stdev = 289.783
-  CI (99.9%): [13874.461, 16106.166] (assumes normal distribution)
+  15087.887 ±(99.9%) 832.642 ns/op [Average]
+  (min, avg, max) = (14546.770, 15087.887, 16079.255), stdev = 550.741
+  CI (99.9%): [14255.244, 15920.529] (assumes normal distribution)
 
 
-# Run complete. Total time: 00:00:20
+# Run complete. Total time: 00:00:30
 
 Benchmark                          Mode  Cnt       Score       Error  Units
-CDKBenchmark.testGetAtomType       avgt    5  655260.019 ± 87681.805  ns/op
-CDKBenchmark.testPerceiveAtomType  avgt    5   14990.314 ±  1115.852  ns/op
+CDKBenchmark.testGetAtomType       avgt   10  661051.429 ± 66399.626  ns/op
+CDKBenchmark.testPerceiveAtomType  avgt   10   15087.887 ±   832.642  ns/op

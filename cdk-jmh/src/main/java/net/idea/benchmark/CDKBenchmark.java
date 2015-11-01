@@ -36,7 +36,7 @@ import org.openscience.cdk.tools.manipulator.AtomTypeManipulator;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 5)
-@Measurement(iterations = 5)
+@Measurement(iterations = 10)
 @Fork(1)
 @State(Scope.Benchmark)
 public class CDKBenchmark {
