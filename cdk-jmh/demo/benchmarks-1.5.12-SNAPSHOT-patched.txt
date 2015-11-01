@@ -1,0 +1,67 @@
+# JMH 1.11.2 (released 3 days ago)
+# VM version: JDK 1.8.0_65, VM 25.65-b01
+# VM invoker: jre1.8.0_65\bin\java.exe
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: net.idea.benchmark.CDKBenchmark.testGetAtomType
+
+# Run progress: 0.00% complete, ETA 00:00:20
+# Fork: 1 of 1
+# Warmup Iteration   1: 116413.009 ns/op
+# Warmup Iteration   2: 114813.057 ns/op
+# Warmup Iteration   3: 124930.097 ns/op
+# Warmup Iteration   4: 134611.193 ns/op
+# Warmup Iteration   5: 144793.881 ns/op
+Iteration   1: 184654.106 ns/op
+Iteration   2: 149337.055 ns/op
+Iteration   3: 166959.103 ns/op
+Iteration   4: 124297.848 ns/op
+Iteration   5: 136115.598 ns/op
+
+
+Result "testGetAtomType":
+  152272.742 ±(99.9%) 92665.973 ns/op [Average]
+  (min, avg, max) = (124297.848, 152272.742, 184654.106), stdev = 24065.059
+  CI (99.9%): [59606.769, 244938.715] (assumes normal distribution)
+
+
+# JMH 1.11.2 (released 3 days ago)
+# VM version: JDK 1.8.0_65, VM 25.65-b01
+# VM invoker: jre1.8.0_65\bin\java.exe
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: net.idea.benchmark.CDKBenchmark.testPerceiveAtomType
+
+# Run progress: 50.00% complete, ETA 00:00:10
+# Fork: 1 of 1
+# Warmup Iteration   1: 23083.723 ns/op
+# Warmup Iteration   2: 17385.037 ns/op
+# Warmup Iteration   3: 21684.786 ns/op
+# Warmup Iteration   4: 23283.142 ns/op
+# Warmup Iteration   5: 24447.272 ns/op
+Iteration   1: 33070.890 ns/op
+Iteration   2: 26692.598 ns/op
+Iteration   3: 22314.077 ns/op
+Iteration   4: 15116.627 ns/op
+Iteration   5: 17580.621 ns/op
+
+
+Result "testPerceiveAtomType":
+  22954.963 ±(99.9%) 27702.946 ns/op [Average]
+  (min, avg, max) = (15116.627, 22954.963, 33070.890), stdev = 7194.367
+  CI (99.9%): [? 0, 50657.909] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:00:20
+
+Benchmark                          Mode  Cnt       Score       Error  Units
+CDKBenchmark.testGetAtomType       avgt    5  152272.742 ± 92665.973  ns/op
+CDKBenchmark.testPerceiveAtomType  avgt    5   22954.963 ± 27702.946  ns/op
