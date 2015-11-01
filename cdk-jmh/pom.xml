@@ -171,7 +171,7 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
-				<cdk.version>cdk-1.5.12-SNAPSHOT</cdk.version>
+				<cdk.version>1.5.12-SNAPSHOT</cdk.version>
 			</properties>
 		</profile>
 	</profiles>
