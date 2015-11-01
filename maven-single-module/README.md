@@ -11,7 +11,7 @@ Compile:
 Jars are created in the target folder.
 
 * Executable jar (with dependencies)
-        target/example-cdk-maven1-0.0.1-SNAPSHOT.jar
+        target/example-cdk-maven1-1.0.0-SNAPSHOT.jar
 * jar (without dependencies)
         target/example-cdk-maven1.jar
 * Sources 
@@ -23,6 +23,15 @@ Jars are created in the target folder.
 
 Compile with specific CDK version
 --------------
+    mvn clean install -P cdk-1.5.11
+    
+This command uses Maven profile -P cdk-1.5.11. See below more information on maven profiles.     
+
+Pre 1.5.x CDK versions    
+--------------
+    To use CDK versions before 1.5.x, please use
+    
+    https://github.com/ideaconsult/examples-cdk/tree/examples-cdk-1.4/maven-single-module
 
     mvn clean install -P cdk-1.3.8
 
