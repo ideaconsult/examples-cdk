@@ -7,16 +7,21 @@ import org.openscience.cdk.interfaces.IAtomType;
 import org.openscience.cdk.silent.SilentChemObjectBuilder;
 
 public class CDKBenchmark {
-	static AtomTypeFactory factory = AtomTypeFactory.getInstance("org/openscience/cdk/dict/data/cdk-atom-types.owl", SilentChemObjectBuilder.getInstance());
-	
-    @Benchmark
-    public void testGetAtomType() throws NoSuchAtomTypeException {
+	static AtomTypeFactory factory = AtomTypeFactory.getInstance(
+			"org/openscience/cdk/dict/data/cdk-atom-types.owl",
+			SilentChemObjectBuilder.getInstance());
 
-    	IAtomType[] atomtypes = factory.getAllAtomTypes();
-    	for (IAtomType atomtype: atomtypes) {
-    		IAtomType type = factory.getAtomType(atomtype.getAtomTypeName());
-    	}
-
-    }
+	@Benchmark
+	public int testGetAtomType() throws NoSuchAtomTypeException {
+		int count = 0;
+		IAtomType[] atomtypes = factory.getAllAtomTypes();
+		for (int i = 0; i < 1000; i++)
+			for (IAtomType atomtype : atomtypes) {
+				IAtomType type = factory
+						.getAtomType(atomtype.getAtomTypeName());
+				count++;
+			}
+		return count;
+	}
 
 }
