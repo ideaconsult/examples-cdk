@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.idea.examples.cdk</groupId>
   <artifactId>maven-single-module</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <name>maven-single-module</name>
   <description>Simple Maven Project example with The Chemistry Development Kit dependency</description>
   <scm>
@@ -31,7 +31,7 @@
     <dependency>
       <groupId>commons-cli</groupId>
       <artifactId>commons-cli</artifactId>
-      <version>1.1</version>
+      <version>1.3.1</version>
     </dependency>
     <!-- CDK jars -->
     <dependency>
@@ -41,7 +41,7 @@
     </dependency>
     <dependency>
       <groupId>org.openscience.cdk</groupId>
-      <artifactId>cdk-data</artifactId>
+      <artifactId>cdk-silent</artifactId>
       <version>${cdk.version}</version>
     </dependency>
     <dependency>
@@ -103,7 +103,7 @@
       <!-- Create executable jar with all dependencies included  -->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.2-beta-2</version>
+        <version>2.6</version>
         <executions>
           <execution>
             <id>create-executable-jar</id>
@@ -130,6 +130,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
+         <version>2.4</version>
         <executions>
           <execution>
             <goals>
@@ -143,6 +144,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>2.6</version>
         <executions>
           <execution>
             <goals>
@@ -155,7 +157,7 @@
       <plugin>  
 	   <groupId>org.codehaus.mojo</groupId>  
 	   <artifactId>exec-maven-plugin</artifactId>  
-	   <version>1.1.1</version>  
+	    <version>1.4.0</version>  
 	   <executions>  
 	    <execution>  
 	     <phase>test</phase>  
@@ -187,16 +189,17 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>2.3.1</version>
+           <version>3.3</version>
           <configuration>
-            <source>1.5</source>
-            <target>1.5</target>
+            <source>1.7</source>
+            <target>1.7</target>
           </configuration>
         </plugin>
         <!-- JUnit tests -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.19</version>
           <configuration>
             <skip>false</skip>
             <disableXmlReport>true</disableXmlReport>
@@ -251,15 +254,16 @@
         <!-- UML class diagrams  -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.7</version>
+         <version>2.10.3</version>
         <!-- <docletPath>/path/to/UmlGraph.jar</docletPath> -->
         <configuration>
-          <source>1.5</source>
+          <source>1.7</source>
           <aggregate>false</aggregate>
           <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
           <docletArtifact>
             <groupId>gr.spinellis</groupId>
             <artifactId>UmlGraph</artifactId>
+            <!--   <version>5.7</version>  -->
             <version>4.6</version>
           </docletArtifact>
           <additionalparam>
@@ -279,13 +283,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>2.4</version>
+        <version>3.5</version>
         <configuration>
           <linkXref>false</linkXref>
           <sourceEncoding>utf-8</sourceEncoding>
           <minimumTokens>100</minimumTokens>
           <targetJdk>
-					1.5
+					1.7
 				</targetJdk>
           <excludes>
             <exclude>*/generated/.java</exclude>
@@ -296,7 +300,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
-        <version>2.0-beta-2</version>
+        <version>2.0</version>
       </plugin>
       <!-- Generate Javadoc jars -->
       <plugin>
@@ -342,102 +346,22 @@
       </build>
     </profile>
     <profile>
-    	<id>cdk-1.4.11</id>
-    	<activation>
-    		<activeByDefault>false</activeByDefault>
-    	</activation>
-    	<properties>
-    		<cdk.version>1.4.11</cdk.version>
-    	</properties>
-    </profile>
-    <profile>
-    	<id>cdk-1.4.10</id>
-    	<activation>
-    		<activeByDefault>false</activeByDefault>
-    	</activation>
-    	<properties>
-    		<cdk.version>1.4.10</cdk.version>
-    	</properties>
-    </profile>
-    <profile>
-    	<id>cdk-1.4.9</id>
+    	<id>cdk-1.5.11</id>
     	<activation>
     		<activeByDefault>true</activeByDefault>
     	</activation>
     	<properties>
-    		<cdk.version>1.4.9</cdk.version>
+    		<cdk.version>1.5.11</cdk.version>
     	</properties>
-    	
     </profile>
     <profile>
-    	<id>cdk-1.4.8</id>
+    	<id>cdk-1.5.12-SNAPSHOT</id>
     	<activation>
     		<activeByDefault>false</activeByDefault>
     	</activation>
     	<properties>
-    		<cdk.version>1.4.8</cdk.version>
+    		<cdk.version>cdk-1.5.12-SNAPSHOT</cdk.version>
     	</properties>
-    	
     </profile>
-    <profile>
-    	<id>cdk-1.4.5</id>
-    	<activation>
-    		<activeByDefault>false</activeByDefault>
-    	</activation>
-    	<properties>
-    		<cdk.version>1.4.5</cdk.version>
-    	</properties>
-    	
-    </profile>    
-    <profile>
-    	<id>cdk-1.3.8</id>
-    	<activation>
-    		<activeByDefault>false</activeByDefault>
-    	</activation>
-    	<properties>
-    		<cdk.version>1.3.8</cdk.version>
-    	</properties>
-    	
-    </profile>        
-    <profile>
-    	<id>cdk-1.2.3</id>
-    	<activation>
-    		<activeByDefault>false</activeByDefault>
-    	</activation>
-    	<properties>
-    		<cdk.version>1.2.3</cdk.version>
-    	</properties>
-    	
-    </profile>        
-    <profile>
-    	<id>cdk-1.2.0</id>
-    	<activation>
-    		<activeByDefault>false</activeByDefault>
-    	</activation>
-    	<properties>
-    		<cdk.version>1.2.0</cdk.version>
-    	</properties>
-    	
-    </profile>        
-    <profile>
-    	<id>cdk-1.1.6</id>
-    	<activation>
-    		<activeByDefault>false</activeByDefault>
-    	</activation>
-    	<properties>
-    		<cdk.version>1.1.6</cdk.version>
-    	</properties>
-    	
-    </profile>        
-    <profile>
-    	<id>cdk-1.1.5</id>
-    	<activation>
-    		<activeByDefault>false</activeByDefault>
-    	</activation>
-    	<properties>
-    		<cdk.version>1.1.5</cdk.version>
-    	</properties>
-    	
-    </profile>        
   </profiles>
 </project>

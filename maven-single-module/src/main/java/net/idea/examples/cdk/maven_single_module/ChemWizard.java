@@ -12,16 +12,18 @@ import java.util.logging.Logger;
 
 import net.idea.examples.cdk.maven_single_module.MainApp._option;
 
-import org.openscience.cdk.DefaultChemObjectBuilder;
-import org.openscience.cdk.aromaticity.CDKHueckelAromaticityDetector;
+import org.openscience.cdk.aromaticity.Aromaticity;
+import org.openscience.cdk.aromaticity.ElectronDonation;
+import org.openscience.cdk.graph.Cycles;
 import org.openscience.cdk.interfaces.IAtomContainer;
-import org.openscience.cdk.interfaces.IMolecule;
-import org.openscience.cdk.io.iterator.IteratingMDLReader;
+import org.openscience.cdk.io.iterator.IteratingSDFReader;
 import org.openscience.cdk.qsar.DescriptorValue;
 import org.openscience.cdk.qsar.descriptors.molecular.ALOGPDescriptor;
 import org.openscience.cdk.qsar.descriptors.molecular.XLogPDescriptor;
 import org.openscience.cdk.qsar.result.DoubleArrayResult;
+import org.openscience.cdk.silent.SilentChemObjectBuilder;
 import org.openscience.cdk.smiles.SmilesGenerator;
+import org.openscience.cdk.tools.CDKHydrogenAdder;
 import org.openscience.cdk.tools.manipulator.AtomContainerManipulator;
 
 /**
@@ -30,6 +32,7 @@ import org.openscience.cdk.tools.manipulator.AtomContainerManipulator;
  *
  */
 public class ChemWizard {
+	protected Aromaticity aromaticity = new Aromaticity(ElectronDonation.cdk(),Cycles.cdkAromaticSet());
 	private final static Logger LOGGER = Logger.getLogger(ChemWizard.class.getName());
 	protected File file;
 	public ChemWizard() {
@@ -91,7 +94,8 @@ public class ChemWizard {
 		 * cdk-io module
 		 * http://ambit.uni-plovdiv.bg:8083/nexus/index.html#nexus-search;classname~IteratingMDLReader
 		 */
-		IteratingMDLReader reader = null;
+
+		IteratingSDFReader reader = null;
 		
 		Writer writer = new BufferedWriter(new OutputStreamWriter(System.out));
 		for (FIELD field : FIELD.values()) { 
@@ -104,18 +108,11 @@ public class ChemWizard {
 			 * cdk-slient module
 			 * http://ambit.uni-plovdiv.bg:8083/nexus/index.html#nexus-search;classname~SilentChemObjectBuilder
 			 */			
-			reader = new IteratingMDLReader(in, DefaultChemObjectBuilder.getInstance());
+			reader = new IteratingSDFReader(in, SilentChemObjectBuilder.getInstance());
 			LOGGER.log(Level.INFO, String.format("Reading %s",file.getAbsoluteFile()));
 			while (reader.hasNext()) {
-				/**
-				 * Note recent versions allow 
-				 * IAtomContainer molecule  = reader.next();
-				 */
-				Object object = reader.next();
-				IMolecule molecule = null;
-				if (object instanceof IMolecule)
-					molecule = (IMolecule)object;
-				else break;
+
+				IAtomContainer molecule = reader.next();
 				
 				records_read++;
 				try {
@@ -123,7 +120,9 @@ public class ChemWizard {
 					 * cdk-standard module
 					 */
 					AtomContainerManipulator.percieveAtomTypesAndConfigureAtoms(molecule);
-					CDKHueckelAromaticityDetector.detectAromaticity(molecule);
+					CDKHydrogenAdder.getInstance(SilentChemObjectBuilder.getInstance()).addImplicitHydrogens(molecule);
+
+					aromaticity.apply(molecule);
 
 					/**
 					 * Generate SMILES and assign as properties
@@ -164,21 +163,12 @@ public class ChemWizard {
 		return records_read;
 	}
 	
-	/**
-	 * cdk-smiles module 
-	 * http://ambit.uni-plovdiv.bg:8083/nexus/index.html#nexus-search;classname~SmilesGenerator
-	 */
-	private SmilesGenerator smilesGenerator = new SmilesGenerator();
-	
 	private XLogPDescriptor xlogp;
 	private ALOGPDescriptor alogp;
 	
-	protected void assignSMILES(IMolecule molecule) throws Exception {
-		smilesGenerator.setUseAromaticityFlag(false);
-		molecule.setProperty(FIELD.SMILES_Kekule.name(),smilesGenerator.createSMILES(molecule));
-		smilesGenerator.setUseAromaticityFlag(true);
-		smilesGenerator.createSMILES(molecule);
-		molecule.setProperty(FIELD.SMILES_Aromatic.name(),smilesGenerator.createSMILES(molecule));
+	protected void assignSMILES(IAtomContainer molecule) throws Exception {
+		molecule.setProperty(FIELD.SMILES_Kekule.name(),SmilesGenerator.isomeric().create(molecule));
+		molecule.setProperty(FIELD.SMILES_Aromatic.name(),new SmilesGenerator().aromatic().create(molecule));
 		
 	}
 	
