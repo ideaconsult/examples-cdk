@@ -164,7 +164,7 @@ public class CDKBenchmark {
 	 
 	 @Benchmark
 	 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-	 public List<IAtomContainer> testPerceiveAtomType(Molecules molecules) throws Exception {
+	 public List<IAtomContainer> testPerceiveAtomTypeMolecule(Molecules molecules) throws Exception {
 	     CDKAtomTypeMatcher matcher = CDKAtomTypeMatcher.getInstance(SilentChemObjectBuilder.getInstance());
 	     for (IAtomContainer mol : molecules.instance) {
 	       matcher.findMatchingAtomTypes(mol);
