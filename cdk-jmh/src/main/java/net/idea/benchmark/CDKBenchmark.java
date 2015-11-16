@@ -1,6 +1,8 @@
 package net.idea.benchmark;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -30,6 +32,7 @@ import org.openscience.cdk.interfaces.IAtomType;
 import org.openscience.cdk.io.MDLReader;
 import org.openscience.cdk.silent.AtomContainer;
 import org.openscience.cdk.silent.SilentChemObjectBuilder;
+import org.openscience.cdk.smiles.SmilesParser;
 import org.openscience.cdk.tools.manipulator.AtomTypeManipulator;
 
 import com.google.common.base.Verify;
@@ -91,6 +94,31 @@ public class CDKBenchmark {
 		}
 	}
 
+	@State(Scope.Benchmark)
+	 public static class Molecules {
+	  List<IAtomContainer> instance;
+
+	  @Setup(Level.Trial)
+	  public void initialize() throws Exception {
+	   List<IAtomContainer> list = new ArrayList<IAtomContainer>();
+	   SmilesParser parser = new SmilesParser(SilentChemObjectBuilder.getInstance());
+	   list.add(parser.parseSmiles("CN(C)CCC1=CNc2c1cc(cc2)CC1NC(=O)OC1"));
+	   list.add(parser.parseSmiles("CN(C)CCC1=CNC2=C1C=C(C=C2)CC1NC(=O)OC1"));
+	   list.add(parser.parseSmiles("c1cnc2s[cH][cH]n12"));
+	   list.add(parser.parseSmiles("c2c1ccccc1c[nH]2"));
+	   list.add(parser.parseSmiles("[H]C5(CCC(N)=O)(C=1N=C(C=C4N=C(C(C)=C3[N-]C(C)(C2N=C(C=1(C))C(C)"
+	                + "(CCC(=O)NCC(C)O)C2([H])(CC(N)=O))C(C)(CC(N)=O)C3([H])(CCC(N)=O))"
+	                + "C(C)(CC(N)=O)C4([H])(CCC(N)=O))C5(C)(C)).[H][C-]([H])C3([H])(OC([H])"
+	                + "(N2C=NC=1C(N)=NC=NC=12)C([H])(O)C3([H])(O)).[Co+3]"));
+	   list.add(parser.parseSmiles("[Pt](Cl)(Cl)(N)N"));
+	   list.add(parser.parseSmiles("CN(C)(=O)CCC=C2c1ccccc1CCc3ccccc23"));
+	   list.add(parser.parseSmiles("CCCN1CC(CSC)CC2C1Cc3c[nH]c4cccc2c34"));
+	   list.add(parser.parseSmiles("Clc1cccc(N2CCN(CCCCNC(=O)C3=Cc4ccccc4[Te]3)CC2)c1Cl"));
+	   instance = list;
+	  }
+
+	 }
+	
 	@Benchmark
 	@OutputTimeUnit(TimeUnit.NANOSECONDS)
 	public int testGetAtomType(BenchmarkFactory factory)
@@ -121,6 +149,30 @@ public class CDKBenchmark {
 		}
 		return molecule.instance;
 	}
+	
+	 @Benchmark
+	 @OutputTimeUnit(TimeUnit.NANOSECONDS)
+	 public List<IAtomContainer> testPerceiveOneByOne(Molecules molecules) throws Exception {
+	     CDKAtomTypeMatcher matcher = CDKAtomTypeMatcher.getInstance(SilentChemObjectBuilder.getInstance());
+	     for (IAtomContainer mol : molecules.instance) {
+	       for (IAtom atom : mol.atoms()) {
+	    IAtomType matched = matcher.findMatchingAtomType(mol, atom);
+	       }
+	     }
+	     return molecules.instance;
+	 }
+	 
+	 @Benchmark
+	 @OutputTimeUnit(TimeUnit.NANOSECONDS)
+	 public List<IAtomContainer> testPerceiveAtomType(Molecules molecules) throws Exception {
+	     CDKAtomTypeMatcher matcher = CDKAtomTypeMatcher.getInstance(SilentChemObjectBuilder.getInstance());
+	     for (IAtomContainer mol : molecules.instance) {
+	       matcher.findMatchingAtomTypes(mol);
+	     }
+	     return molecules.instance;
+	 }	
+	
+
 
 	public static void main(String[] args) throws RunnerException {
 		Options opt = new OptionsBuilder()
