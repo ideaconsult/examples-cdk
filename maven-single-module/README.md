@@ -23,9 +23,9 @@ Jars are created in the target folder.
 
 Compile with specific CDK version
 --------------
-    mvn clean install -P cdk-1.5.11
+    mvn clean install -P cdk-1.5.12
     
-This command uses Maven profile -P cdk-1.5.11. See below more information on maven profiles.     
+This command uses Maven profile -P cdk-1.5.12. See below more information on maven profiles.     
 
 Pre 1.5.x CDK versions    
 --------------
