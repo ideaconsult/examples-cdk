@@ -360,7 +360,7 @@
     		<activeByDefault>true</activeByDefault>
     	</activation>
     	<properties>
-    		<cdk.version>cdk-1.5.12</cdk.version>
+    		<cdk.version>1.5.12</cdk.version>
     	</properties>
     </profile>
   </profiles>
