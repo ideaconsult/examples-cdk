@@ -348,19 +348,19 @@
     <profile>
     	<id>cdk-1.5.11</id>
     	<activation>
-    		<activeByDefault>true</activeByDefault>
+    		<activeByDefault>false</activeByDefault>
     	</activation>
     	<properties>
     		<cdk.version>1.5.11</cdk.version>
     	</properties>
     </profile>
     <profile>
-    	<id>cdk-1.5.12-SNAPSHOT</id>
+    	<id>cdk-1.5.12</id>
     	<activation>
-    		<activeByDefault>false</activeByDefault>
+    		<activeByDefault>true</activeByDefault>
     	</activation>
     	<properties>
-    		<cdk.version>cdk-1.5.12-SNAPSHOT</cdk.version>
+    		<cdk.version>cdk-1.5.12</cdk.version>
     	</properties>
     </profile>
   </profiles>
