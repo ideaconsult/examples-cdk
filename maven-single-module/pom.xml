@@ -372,7 +372,7 @@
     <profile>
     	<id>cdk-1.5.13</id>
     	<activation>
-    		<activeByDefault>false</activeByDefault>
+    		<activeByDefault>true</activeByDefault>
     	</activation>
     	<properties>
     		<cdk.version>1.5.13</cdk.version>
@@ -381,11 +381,20 @@
     <profile>
     	<id>cdk-1.5.14</id>
     	<activation>
-    		<activeByDefault>true</activeByDefault>
+    		<activeByDefault>false</activeByDefault>
     	</activation>
     	<properties>
     		<cdk.version>1.5.14</cdk.version>
     	</properties>
     </profile>    
+    <profile>
+    	<id>cdk-2.0-SNAPSHOT</id>
+    	<activation>
+    		<activeByDefault>true</activeByDefault>
+    	</activation>
+    	<properties>
+    		<cdk.version>2.0-SNAPSHOT</cdk.version>
+    	</properties>
+    </profile>        
   </profiles>
 </project>
