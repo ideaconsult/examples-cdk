@@ -21,15 +21,36 @@ java -jar target/benchmarks-1.5.12.jar
 
 ## Results
 
-### CDK 1.5.11
+### CDK 2.1.1
+
+````
+Benchmark                                  Mode  Cnt         Score         Error  Units
+CDKBenchmark.testGetAtomType               avgt   10      2812.707 ±      56.194  ns/op
+CDKBenchmark.testPerceiveAtomType          avgt   10  25466125.192 ± 3231232.225  ns/op
+CDKBenchmark.testPerceiveAtomTypeMolecule  avgt   10    185876.944 ±    8564.560  ns/op
+CDKBenchmark.testPerceiveOneByOne          avgt   10    243329.723 ±    8997.216  ns/op
+```
+
+### CDK 2.0
+
+````
+Benchmark                                  Mode  Cnt         Score         Error  Units
+CDKBenchmark.testGetAtomType               avgt   10      2935.119 ±     217.824  ns/op
+CDKBenchmark.testPerceiveAtomType          avgt   10  26673793.922 ± 6248886.900  ns/op
+CDKBenchmark.testPerceiveAtomTypeMolecule  avgt   10    198573.085 ±    7198.933  ns/op
+CDKBenchmark.testPerceiveOneByOne          avgt   10    245430.441 ±   22361.898  ns/op
+```
+
+### CDK 1.5.15
 
 ````
 Benchmark                                  Mode  Cnt         Score        Error  Units
-CDKBenchmark.testGetAtomType               avgt   10    132818.735 ±   5126.064  ns/op
-CDKBenchmark.testPerceiveAtomType          avgt   10  16489288.520 ± 887591.792  ns/op
-CDKBenchmark.testPerceiveAtomTypeMolecule  avgt   10    556231.484 ±  21587.939  ns/op
-CDKBenchmark.testPerceiveOneByOne          avgt   10    566522.939 ±  98853.575  ns/op
+CDKBenchmark.testGetAtomType               avgt   10      2875.873 ±    157.777  ns/op
+CDKBenchmark.testPerceiveAtomType          avgt   10  13600477.970 ± 378778.487  ns/op
+CDKBenchmark.testPerceiveAtomTypeMolecule  avgt   10    168388.598 ±  16531.814  ns/op
+CDKBenchmark.testPerceiveOneByOne          avgt   10    222170.399 ±   4715.878  ns/op
 ````
+
 
 ### CDK 1.5.12
 
@@ -41,12 +62,12 @@ CDKBenchmark.testPerceiveAtomTypeMolecule  avgt   10    181241.041 ±  18984.221
 CDKBenchmark.testPerceiveOneByOne          avgt   10    243263.331 ±  59758.901  ns/op
 ````
 
-### CDK 1.5.15
+### CDK 1.5.11
 
 ````
 Benchmark                                  Mode  Cnt         Score        Error  Units
-CDKBenchmark.testGetAtomType               avgt   10      2875.873 ±    157.777  ns/op
-CDKBenchmark.testPerceiveAtomType          avgt   10  13600477.970 ± 378778.487  ns/op
-CDKBenchmark.testPerceiveAtomTypeMolecule  avgt   10    168388.598 ±  16531.814  ns/op
-CDKBenchmark.testPerceiveOneByOne          avgt   10    222170.399 ±   4715.878  ns/op
+CDKBenchmark.testGetAtomType               avgt   10    132818.735 ±   5126.064  ns/op
+CDKBenchmark.testPerceiveAtomType          avgt   10  16489288.520 ± 887591.792  ns/op
+CDKBenchmark.testPerceiveAtomTypeMolecule  avgt   10    556231.484 ±  21587.939  ns/op
+CDKBenchmark.testPerceiveOneByOne          avgt   10    566522.939 ±  98853.575  ns/op
 ````

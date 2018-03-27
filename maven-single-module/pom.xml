@@ -67,12 +67,13 @@
 			<artifactId>cdk-qsarmolecular</artifactId>
 			<version>${cdk.version}</version>
 		</dependency>
-		<!-- new for CDK2.x -->
+		<!-- new for CDK2.1.1 -->
 		<dependency>
 			<groupId>org.openscience.cdk</groupId>
 			<artifactId>cdk-ctab</artifactId>
 			<version>${cdk.version}</version>
 		</dependency>
+		 
 	</dependencies>
 	<repositories>
 

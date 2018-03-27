@@ -54,6 +54,13 @@
 			<artifactId>cdk-core</artifactId>
 			<version>${cdk.version}</version>
 		</dependency>
+		<!-- new for cdk 2.1.1 --> 
+		<dependency>
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-ctab</artifactId>
+			<version>${cdk.version}</version>
+		</dependency>
+		 
 		<dependency>
 			<groupId>org.openscience.cdk</groupId>
 			<artifactId>cdk-standard</artifactId>
@@ -208,6 +215,16 @@
 				<cdk.version>1.5.15</cdk.version>
 			</properties>
 		</profile>
+		<profile>
+			<id>cdk-2.0</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<cdk.version>2.0</cdk.version>
+			</properties>
+		</profile>			
+	
 		<profile>
 			<id>cdk-2.1.1</id>
 			<activation>
