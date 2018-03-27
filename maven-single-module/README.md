@@ -11,7 +11,7 @@ Compile:
 Jars are created in the target folder.
 
 * Executable jar (with dependencies)
-        target/example-cdk-maven1-1.0.0-SNAPSHOT.jar
+        target/example-cdk-maven1-2.1.1-SNAPSHOT.jar
 * jar (without dependencies)
         target/example-cdk-maven1.jar
 * Sources 
@@ -23,10 +23,18 @@ Jars are created in the target folder.
 
 Compile with specific CDK version
 --------------
-    mvn clean install -P cdk-1.5.12
+    mvn clean install -P cdk-2.1.1
     
-This command uses Maven profile -P cdk-1.5.12. See below more information on maven profiles.     
+This command uses Maven profile -P cdk-2.1.1. See below more information on maven profiles.     
 
+CDK 1.5.x     
+--------------
+    To use CDK versions 1.5.x, please use
+    
+    https://github.com/ideaconsult/examples-cdk/tree/examples-cdk-1.5/maven-single-module
+
+    mvn clean install -P cdk-1.5.15
+    
 Pre 1.5.x CDK versions    
 --------------
     To use CDK versions before 1.5.x, please use
@@ -61,23 +69,16 @@ Listing all profiles.
     [INFO]    task-segment: [help:all-profiles] (aggregator-style)
     [INFO] ------------------------------------------------------------------------
     [INFO] [help:all-profiles {execution: default-cli}]
-    [INFO] Listing Profiles for Project: net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT
-      Profile Id: cdk-1.4.10 (Active: true , Source: pom)
-      Profile Id: cdk-1.4.9 (Active: false , Source: pom)
-      Profile Id: cdk-1.4.8 (Active: false , Source: pom)
-      Profile Id: cdk-1.4.5 (Active: false , Source: pom)
-      Profile Id: cdk-1.3.8 (Active: false , Source: pom)
-      Profile Id: cdk-1.2.3 (Active: false , Source: pom)
-      Profile Id: cdk-1.2.0 (Active: false , Source: pom)
-      Profile Id: cdk-1.1.6 (Active: false , Source: pom)
-      Profile Id: cdk-1.1.5 (Active: false , Source: pom)
-      Profile Id: development (Active: false , Source: pom)
-      Profile Id: production (Active: false , Source: pom)
+    [INFO] Listing Profiles for Project: net.idea.examples.cdk:maven-single-module:jar:2.0.0-SNAPSHOT
+		 Profile Id: cdk-2.1.1 (Active: true , Source: pom)
+		 Profile Id: cdk-2.1 (Active: false , Source: pom)
+		 Profile Id: cdk-2.0 (Active: false , Source: pom)
+
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESSFUL
     [INFO] ------------------------------------------------------------------------
 	    
-Displaying the active profile. The default active profile is -P cdk-1.4.10 
+Displaying the active profile. The default active profile is -P cdk-2.1.1 
 
        
     maven-single-module>mvn help:active-profiles
@@ -89,11 +90,11 @@ Displaying the active profile. The default active profile is -P cdk-1.4.10
     [INFO] ------------------------------------------------------------------------
     [INFO] [help:active-profiles {execution: default-cli}]
     [INFO]
-    Active Profiles for Project 'net.idea.examples.cdk:maven-single-module:jar:0.0.1-SNAPSHOT':
+    Active Profiles for Project 'net.idea.examples.cdk:maven-single-module:jar:2.0.0-SNAPSHOT':
     
     The following profiles are active:
     
-     - cdk-1.4.10 (source: pom)	    
+     - cdk-2.1.1 (source: pom)	    
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESSFUL
     [INFO] ------------------------------------------------------------------------	 
