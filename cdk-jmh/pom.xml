@@ -68,12 +68,12 @@
 			<groupId>org.openscience.cdk</groupId>
 			<artifactId>cdk-io</artifactId>
 			<version>${cdk.version}</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.openscience.cdk</groupId>
 			<artifactId>cdk-smiles</artifactId>
 			<version>${cdk.version}</version>
-		</dependency>			
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -184,7 +184,7 @@
 		<profile>
 			<id>cdk-1.5.11</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<cdk.version>1.5.11</cdk.version>
@@ -197,6 +197,24 @@
 			</activation>
 			<properties>
 				<cdk.version>1.5.12</cdk.version>
+			</properties>
+		</profile>
+		<profile>
+			<id>cdk-1.5.15</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<cdk.version>1.5.15</cdk.version>
+			</properties>
+		</profile>
+		<profile>
+			<id>cdk-2.1.1</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<cdk.version>2.1.1</cdk.version>
 			</properties>
 		</profile>
 	</profiles>
