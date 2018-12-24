@@ -1,12 +1,12 @@
 Manifest-version: 1.0
 Package-Title: net.idea.examples.cdk.maven_single_module
 Main-Class: net.idea.examples.cdk.maven_single_module.MainApp
-Specification-Title: Example of a simple Apache Maven project with The Chemical Development Kit dependency
+Specification-Title: Example of a simple Apache Maven project with The Chemistry Development Kit dependency
 Specification-Vendor: IdeaConsult Ltd.
 Specification-Version: 2012
 Package-Version: ${project.version}
 Package-Vendor: IdeaConsult Ltd.
-Implementation-Title: Example of a simple Apache Maven project with The Chemical Development Kit dependency
+Implementation-Title: Example of a simple Apache Maven project with The Chemistry Development Kit dependency
 Implementation-Version: ${project.version}
 Implementation-Vendor: IdeaConsult Ltd
 cdk.version: ${cdk.version}
